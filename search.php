@@ -17,23 +17,24 @@ function http_request($url){
     curl_close($ch);      
     return $output;
 }
-$crot = http_request("https://api.github.com/search/repositories?q=$target");
-$crot = json_decode($crot, TRUE);
+$cr = http_request("https://api.github.com/search/repositories?q=$target");
+$cr = json_decode($cr, TRUE);
  
-for ($i = 0; $i < count($crot['items']); $i++) {
-    $id   = $crot['items'][$i]['owner']['id'];
-    $user = $crot['items'][$i]['owner']['login'];
-    $foto = $crot['items'][$i]['owner']['avatar_url'];
-    $url  = $crot['items'][$i]['html_url'];
-    $desk = $crot['items'][$i]['description'];
+for ($i = 0; $i < count($cr['items']); $i++) {
+    $id   = $cr['items'][$i]['owner']['id'];
+    $baha = $cr['items'][$i]['language'];
+    $user = $cr['items'][$i]['owner']['login'];
+    $foto = $cr['items'][$i]['owner']['avatar_url'];
+    $url  = $cr['items'][$i]['html_url'];
+    $desk = $cr['items'][$i]['description'];
 
     echo "\n";
     echo "Repositories     : ke-$i\n";
     echo "Id               : $id\n";
+    echo "Bahasa           : $baha\n";
     echo "Username         : $user\n";
     echo "Foto Profil      : $foto\n";
     echo "Url Repositories : $url\n";
     echo "Deskripsi        : $desk\n";
-    echo "$key\n";//
     }
 ?>
